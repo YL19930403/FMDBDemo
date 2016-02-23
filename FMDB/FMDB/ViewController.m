@@ -6,11 +6,15 @@
 //  Copyright © 2016年 余亮. All rights reserved.
 //
 
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+
 #import "ViewController.h"
 #import <sqlite3.h>
 #import "shop.h"
+#import "YLSearchBar.h"
 
-@interface ViewController ()<UITableViewDataSource>
+
+@interface ViewController ()<UITableViewDataSource,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *ShopTextV;
 @property (weak, nonatomic) IBOutlet UITextField *ShopPriceTextV;
 @property (weak, nonatomic) IBOutlet UITableView *tableV;
@@ -34,7 +38,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+
+    //设置TableViewHeader
+    YLSearchBar * searchBar = [YLSearchBar searchBar];
+    searchBar.frame = CGRectMake(0, 0, WIDTH, 30);
+    searchBar.delegate = self ;
+    [searchBar addTarget:self action:@selector(textFieldEditChanged:) forControlEvents:UIControlEventEditingChanged];
+    self.tableV.tableHeaderView = searchBar ;
+    
     //初始化数据库
     [self initDataBase];
     
@@ -122,6 +133,43 @@
     
     return cell ;
     
+}
+
+
+#pragma  mark  -  UITextFieldDelegate
+
+//这里只能拿到单次输入的字符
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSLog(@"%@",string) ;
+    return YES ;
+}
+
+//通过拿到UITextField，以及设置它的状态，则可以拿到所有输入完毕的字符
+- (void) textFieldEditChanged:(UITextField *)textField
+{
+//    NSLog(@"%@",textField.text);
+    [self.shops removeAllObjects];
+    
+    NSString * sql = [NSString stringWithFormat:@"SELECT name, price FROM t_shop WHERE name LIKE  '%%%@%%'; ",textField.text];
+    
+    sqlite3_stmt * stmt = NULL ;  //用来取查询结果
+    //写-1 会自动帮我们计算sql语句的长度
+    int status = sqlite3_prepare_v2(self.db, sql.UTF8String, -1, &stmt, NULL) ;
+    if (status == SQLITE_OK) {    //准备成功，sql语句正确
+        while(sqlite3_step(stmt) == SQLITE_ROW) {  //成功指向一条数据
+            const  char * name = (const  char *) sqlite3_column_text(stmt, 0) ;
+            const  char * price = (const  char *)sqlite3_column_text(stmt, 1) ;
+            
+            //            shop * sp = [shop defaultshop];
+            shop * sp = [[shop alloc] init];
+            sp.name = [NSString stringWithUTF8String:name ];
+            sp.price = [NSString stringWithUTF8String:price] ;
+            [self.shops addObject:sp];
+        }
+    }
+    //重新刷新
+    [self.tableV reloadData];
 }
 
 
