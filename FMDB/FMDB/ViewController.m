@@ -151,7 +151,7 @@
 //    NSLog(@"%@",textField.text);
     [self.shops removeAllObjects];
     
-    NSString * sql = [NSString stringWithFormat:@"SELECT name, price FROM t_shop WHERE name LIKE  '%%%@%%'; ",textField.text];
+    NSString * sql = [NSString stringWithFormat:@"SELECT name, price FROM t_shop WHERE name LIKE  '%%%@%%' OR price LIKE '%%%@%%'; ",textField.text,textField.text];
     
     sqlite3_stmt * stmt = NULL ;  //用来取查询结果
     //写-1 会自动帮我们计算sql语句的长度
