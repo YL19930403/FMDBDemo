@@ -14,7 +14,9 @@
 
 @property(nonatomic,copy) NSString * price ;
 
-//- (instancetype) initshop ;
-//
-//+ (instancetype) defaultshop ;
+//@property(nonatomic,assign)double price2 ;
+
+- (instancetype) initshop ;
+
++ (instancetype) defaultshop ;
 @end

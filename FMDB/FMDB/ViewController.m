@@ -6,12 +6,21 @@
 //  Copyright © 2016年 余亮. All rights reserved.
 //
 
+
+/**
+ *
+         该控制器里面都是用的SQLite3原生的语句
+
+ */
+
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 
 #import "ViewController.h"
 #import <sqlite3.h>
 #import "shop.h"
 #import "YLSearchBar.h"
+#import "FMDBviewController.h"
+
 
 
 @interface ViewController ()<UITableViewDataSource,UITextFieldDelegate>
@@ -66,8 +75,8 @@
             const  char * name = (const  char *) sqlite3_column_text(stmt, 0) ;
             const  char * price = (const  char *)sqlite3_column_text(stmt, 1) ;
 
-//            shop * sp = [shop defaultshop];
-            shop * sp = [[shop alloc] init];
+            shop * sp = [shop defaultshop];
+//            shop * sp = [[shop alloc] init];
             sp.name = [NSString stringWithUTF8String:name ];
             sp.price = [NSString stringWithUTF8String:price] ;
             [self.shops addObject:sp];
@@ -103,12 +112,17 @@
     sqlite3_exec(self.db, sql.UTF8String, NULL, NULL, NULL) ;
     
     //刷新表格
-    shop * sp = [[shop alloc] init];
+    shop * sp = [shop defaultshop];
     sp.name = self.ShopTextV.text ;
     sp.price = self.ShopPriceTextV.text ;
     [self.shops addObject:sp] ;
     [self.tableV reloadData];
     
+}
+- (IBAction)jump:(id)sender {
+    FMDBviewController * fmdbVC = [[FMDBviewController alloc] init];
+    
+    [self presentViewController:fmdbVC animated:YES completion:nil];
 }
 
 
@@ -162,7 +176,7 @@
             const  char * price = (const  char *)sqlite3_column_text(stmt, 1) ;
             
             //            shop * sp = [shop defaultshop];
-            shop * sp = [[shop alloc] init];
+            shop * sp = [shop defaultshop];
             sp.name = [NSString stringWithUTF8String:name ];
             sp.price = [NSString stringWithUTF8String:price] ;
             [self.shops addObject:sp];

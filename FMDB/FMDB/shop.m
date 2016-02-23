@@ -10,16 +10,16 @@
 
 @implementation shop
 
-//- (instancetype) initshop{
-//    if (self == [super init]) {
-//
-//    }
-//    return self ;
-//}
-//
-//
-//+ (instancetype)defaultshop
-//{
-//    return [[self alloc] initshop];
-//}
+- (instancetype) initshop{
+    if (self == [super init]) {
+
+    }
+    return self ;
+}
+
+
++ (instancetype)defaultshop
+{
+    return [[self alloc] initshop];
+}
 @end

@@ -23,6 +23,9 @@
 		29B557131C7C621400609952 /* searchbar_textfield_search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B5570F1C7C621400609952 /* searchbar_textfield_search_icon.png */; };
 		29B557141C7C621400609952 /* searchbar_textfield_search_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B557101C7C621400609952 /* searchbar_textfield_search_icon@2x.png */; };
 		29B557171C7C624C00609952 /* YLSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B557161C7C624C00609952 /* YLSearchBar.m */; };
+		29B5571B1C7C704700609952 /* FMDBviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B557191C7C704700609952 /* FMDBviewController.m */; };
+		29B5571C1C7C704700609952 /* FMDBviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B5571A1C7C704700609952 /* FMDBviewController.xib */; };
+		29B5571F1C7C8AC600609952 /* shopTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B5571E1C7C8AC600609952 /* shopTool.m */; };
 		D333060A8AE32155E160F842 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B9C8A3F1AB8E1957FDB0B2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +73,11 @@
 		29B557101C7C621400609952 /* searchbar_textfield_search_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchbar_textfield_search_icon@2x.png"; sourceTree = "<group>"; };
 		29B557151C7C624C00609952 /* YLSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLSearchBar.h; sourceTree = "<group>"; };
 		29B557161C7C624C00609952 /* YLSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLSearchBar.m; sourceTree = "<group>"; };
+		29B557181C7C704700609952 /* FMDBviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBviewController.h; sourceTree = "<group>"; };
+		29B557191C7C704700609952 /* FMDBviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBviewController.m; sourceTree = "<group>"; };
+		29B5571A1C7C704700609952 /* FMDBviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMDBviewController.xib; sourceTree = "<group>"; };
+		29B5571D1C7C8AC600609952 /* shopTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shopTool.h; sourceTree = "<group>"; };
+		29B5571E1C7C8AC600609952 /* shopTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shopTool.m; sourceTree = "<group>"; };
 		34922AC06FD8FC346A2EAD42 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B0B9C8A3F1AB8E1957FDB0B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF78C297474E1ABA7EE883AE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,8 +159,13 @@
 				29B556D81C7C28BA00609952 /* ViewController.m */,
 				29B557091C7C56AB00609952 /* shop.h */,
 				29B5570A1C7C56AB00609952 /* shop.m */,
+				29B5571D1C7C8AC600609952 /* shopTool.h */,
+				29B5571E1C7C8AC600609952 /* shopTool.m */,
 				29B557151C7C624C00609952 /* YLSearchBar.h */,
 				29B557161C7C624C00609952 /* YLSearchBar.m */,
+				29B557181C7C704700609952 /* FMDBviewController.h */,
+				29B557191C7C704700609952 /* FMDBviewController.m */,
+				29B5571A1C7C704700609952 /* FMDBviewController.xib */,
 				29B556DA1C7C28BA00609952 /* Main.storyboard */,
 				29B556E01C7C28BA00609952 /* Assets.xcassets */,
 				29B556E21C7C28BA00609952 /* LaunchScreen.storyboard */,
@@ -314,6 +327,7 @@
 				29B557121C7C621400609952 /* searchbar_textfield_background@2x.png in Resources */,
 				29B557131C7C621400609952 /* searchbar_textfield_search_icon.png in Resources */,
 				29B557111C7C621400609952 /* searchbar_textfield_background.png in Resources */,
+				29B5571C1C7C704700609952 /* FMDBviewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,9 +401,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				29B5570B1C7C56AB00609952 /* shop.m in Sources */,
+				29B5571B1C7C704700609952 /* FMDBviewController.m in Sources */,
 				29B556D91C7C28BA00609952 /* ViewController.m in Sources */,
 				29B557171C7C624C00609952 /* YLSearchBar.m in Sources */,
 				29B556D61C7C28BA00609952 /* AppDelegate.m in Sources */,
+				29B5571F1C7C8AC600609952 /* shopTool.m in Sources */,
 				29B556DF1C7C28BA00609952 /* FMDB.xcdatamodeld in Sources */,
 				29B556D31C7C28BA00609952 /* main.m in Sources */,
 			);
